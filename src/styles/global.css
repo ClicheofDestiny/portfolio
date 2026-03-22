@@ -1,0 +1,36 @@
+/* @fontsource handles the @font-face declaration — just import it */
+@import '@fontsource/press-start-2p';
+
+:root {
+  --bg:        #0f0f1f;
+  --cabinet:   #1a1a40;
+  --bezel:     #0d0d28;
+  --chrome:    #1e1e4a;
+  --border:    #2a2a5a;
+  --cyan:      #2fffff;
+  --violet:    #7b2fff;
+  --pink:      #ff2faa;
+  --blue:      #2f6fff;
+  --gold:      #ffd700;
+  --white:     #e8e8ff;
+  --dim:       #3a3a6a;
+
+  --font-pixel: 'Press Start 2P', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: var(--bg); color: var(--white); font-family: var(--font-pixel); }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 16px 48px;
+  background: var(--bg);
+}
+
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }

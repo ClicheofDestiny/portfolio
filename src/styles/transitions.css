@@ -1,0 +1,32 @@
+/* CRT flicker transition for Astro View Transitions */
+
+@keyframes crt-out {
+  0%   { opacity: 1; filter: brightness(1); }
+  40%  { opacity: 0.8; filter: brightness(2) blur(1px); }
+  60%  { opacity: 0.1; filter: brightness(0.2); }
+  80%  { opacity: 0.6; filter: brightness(3) blur(2px); }
+  100% { opacity: 0; filter: brightness(0); }
+}
+
+@keyframes crt-in {
+  0%   { opacity: 0; filter: brightness(0); }
+  20%  { opacity: 0.5; filter: brightness(3) blur(2px); }
+  40%  { opacity: 0.2; filter: brightness(0.5); }
+  70%  { opacity: 0.9; filter: brightness(1.5) blur(1px); }
+  100% { opacity: 1; filter: brightness(1); }
+}
+
+::view-transition-old(main-screen) {
+  animation: crt-out 0.25s ease-in forwards;
+}
+
+::view-transition-new(main-screen) {
+  animation: crt-in 0.3s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(main-screen),
+  ::view-transition-new(main-screen) {
+    animation: none;
+  }
+}
