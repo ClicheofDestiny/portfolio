@@ -16,4 +16,13 @@ describe('Konami sequence detection', () => {
     wrong[0] = 'ArrowDown';
     expect(isKonamiComplete(wrong)).toBe(false);
   });
+
+  it('matches after preceding noise keys (sliding window)', () => {
+    // Simulate the buffer slicing behavior: noise keys followed by the full sequence
+    const noise = ['x', 'y', 'z', 'Enter', 'Escape'];
+    const fullInput = [...noise, ...KONAMI_SEQUENCE];
+    // The buffer keeps only the last N keys (KONAMI_SEQUENCE.length)
+    const buffer = fullInput.slice(-KONAMI_SEQUENCE.length);
+    expect(isKonamiComplete(buffer)).toBe(true);
+  });
 });

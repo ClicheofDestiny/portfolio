@@ -82,4 +82,15 @@ describe('checkBrickCollisions', () => {
     const { bricks: updated } = checkBrickCollisions(ball, bricks);
     expect(updated[0].alive).toBe(false);
   });
+
+  it('reverses vy only once when hitting two adjacent bricks simultaneously', () => {
+    const ball = makeBall({ x: 30, y: 14, vy: 3 });
+    // Two adjacent bricks both overlapping the ball
+    const bricks = [
+      makeBrick({ x: 0, y: 0, width: 60, height: 20 }),
+      makeBrick({ x: 0, y: 0, width: 60, height: 20 }),
+    ];
+    const { ball: updated } = checkBrickCollisions(ball, bricks);
+    expect(updated.vy).toBeLessThan(0); // negated exactly once, not twice
+  });
 });

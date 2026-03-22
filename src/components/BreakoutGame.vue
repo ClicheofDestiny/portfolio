@@ -25,6 +25,7 @@ export function checkPaddleCollision(ball: Ball, paddle: Paddle): Ball {
 
 export function checkBrickCollisions(ball: Ball, bricks: Brick[]): { ball: Ball; bricks: Brick[] } {
   let newBall = { ...ball };
+  let reversed = false;
   const newBricks = bricks.map(brick => {
     if (!brick.alive) return brick;
     const hit =
@@ -33,7 +34,10 @@ export function checkBrickCollisions(ball: Ball, bricks: Brick[]): { ball: Ball;
       ball.y + ball.radius > brick.y &&
       ball.y - ball.radius < brick.y + brick.height;
     if (hit) {
-      newBall = { ...newBall, vy: -newBall.vy };
+      if (!reversed) {
+        newBall = { ...newBall, vy: -newBall.vy };
+        reversed = true;
+      }
       return { ...brick, alive: false };
     }
     return brick;
@@ -55,6 +59,7 @@ const BALL_R = 6;
 const BRICK_COLS = 4, BRICK_ROWS = 3, BRICK_W = 80, BRICK_H = 24, BRICK_PAD = 10;
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
+const containerRef = ref<HTMLDivElement | null>(null);
 const won = ref(false);
 let animFrame = 0;
 
@@ -137,13 +142,13 @@ function loop() {
     ball = { x: W/2, y: H/2, vx: 3, vy: -3, radius: BALL_R };
   }
 
+  draw(ctx);
+
   // All bricks cleared
   if (bricks.every(b => !b.alive)) {
     won.value = true;
     return;
   }
-
-  draw(ctx);
   animFrame = requestAnimationFrame(loop);
 }
 
@@ -162,7 +167,10 @@ function handleKeydown(e: KeyboardEvent) {
 }
 
 onMounted(() => {
+  ball = { x: W/2, y: H/2, vx: 3, vy: -3, radius: BALL_R };
+  paddle = { x: (W - PADDLE_W)/2, y: H - 30, width: PADDLE_W, height: PADDLE_H };
   initBricks();
+  containerRef.value?.focus();
   window.addEventListener('keydown', handleKeydown);
   animFrame = requestAnimationFrame(loop);
 });
@@ -174,8 +182,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="breakout-overlay" @click.self="$emit('dismiss')">
-    <div class="breakout-container">
+  <div class="breakout-overlay" role="dialog" aria-modal="true" aria-label="Bonus Stage: Breakout" @click.self="$emit('dismiss')">
+    <div ref="containerRef" class="breakout-container" tabindex="-1">
       <div class="breakout-header text-xxs glow-pink">★ BONUS STAGE ★</div>
       <div v-if="won" class="win-screen text-xs">
         <p class="glow-gold">YOU WIN!</p>
