@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import Marquee from '../components/Marquee.astro';
 import CabinetControls from '../components/CabinetControls.astro';
 import { siteConfig } from '../config/site';
@@ -20,7 +20,7 @@ const { title, screenTitle } = Astro.props;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} | {siteConfig.name}</title>
-  <ViewTransitions />
+  <ClientRouter />
 </head>
 <body>
   <div class="cabinet">
