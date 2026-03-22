@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils';
-import LevelSelect from '../../../src/components/LevelSelect.vue';
+import LevelSelect, { type Stage } from '../../../src/components/LevelSelect.vue';
 
-const stages = [
+const stages: Stage[] = [
   { slug: 'post-one', title: 'Post One', stage: 1, published: true, xp: 200, category: 'leadership', date: '2026-01-01' },
   { slug: 'post-two', title: 'Post Two', stage: 2, published: false, xp: 150, category: 'engineering', date: '2026-02-01' },
 ];
