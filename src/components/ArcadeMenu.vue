@@ -39,6 +39,7 @@ onUnmounted(() => {
         class="menu-item text-xs"
         :class="{ active: i === selectedIndex }"
         @click="() => navigate(item.href)"
+        @keydown.enter.space.prevent="navigate(item.href)"
         @mouseenter="selectedIndex = i"
         tabindex="0"
       >
@@ -57,7 +58,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 10px;
+  padding: 10px;
   color: var(--dim);
   border-radius: 3px;
   cursor: pointer;

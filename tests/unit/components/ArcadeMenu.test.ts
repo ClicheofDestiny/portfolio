@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { mount } from '@vue/test-utils';
 import ArcadeMenu from '../../../src/components/ArcadeMenu.vue';
 import { siteConfig } from '../../../src/config/site';
@@ -49,6 +49,9 @@ describe('ArcadeMenu', () => {
     beforeEach(() => {
       vi.stubGlobal('location', { href: '' });
     });
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
 
     it('Enter navigates to selected item href', async () => {
       const wrapper = mount(ArcadeMenu);
@@ -59,8 +62,9 @@ describe('ArcadeMenu', () => {
     it('clicking an item navigates to its href', async () => {
       const wrapper = mount(ArcadeMenu);
       const items = wrapper.findAll('[role="menuitem"]');
-      await items[2].trigger('click');
-      expect(window.location.href).toBe(siteConfig.nav[2].href);
+      const last = items.length - 1;
+      await items[last].trigger('click');
+      expect(window.location.href).toBe(siteConfig.nav[last].href);
     });
   });
 });
