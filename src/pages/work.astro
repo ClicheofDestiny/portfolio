@@ -2,8 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="My Work" screenTitle="GAME HISTORY">
-  <h1 class="text-md glow-cyan">GAME HISTORY</h1>
-  <p class="text-xxs" style="color:var(--dim);margin-bottom:16px;">MISSIONS COMPLETED</p>
+  <section class="page-section">
+  <h1 class="page-title text-md glow-cyan">GAME HISTORY</h1>
+  <p class="subtitle text-xxs">MISSIONS COMPLETED</p>
 
   <div class="timeline">
     <!-- PLACEHOLDER: Replace each mission with real experience -->
@@ -27,10 +28,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 
   <a href="/" class="back-link text-xxs">← BACK TO MENU</a>
+  </section>
 </BaseLayout>
 
 <style>
-h1 { margin-bottom: 4px; }
+.page-section { margin-bottom: 20px; }
+.page-title { margin-bottom: 4px; }
+.subtitle { color: var(--dim); margin-bottom: 16px; display: block; }
 .timeline { margin-top: 8px; }
 .mission {
   border: 1px solid rgba(47,255,255,0.15);

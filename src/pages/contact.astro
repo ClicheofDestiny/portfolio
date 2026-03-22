@@ -3,19 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { siteConfig } from '../config/site';
 ---
 <BaseLayout title="Contact" screenTitle="INSERT COIN">
-  <h1 class="text-md glow-cyan">INSERT COIN</h1>
-  <p class="text-xxs" style="color:var(--dim);margin-bottom:20px;">READY TO CONNECT?</p>
+  <h1 class="page-title text-md glow-cyan">INSERT COIN</h1>
+  <p class="subtitle text-xxs">READY TO CONNECT?</p>
 
   <div class="links">
-    <a href={`mailto:${siteConfig.social.email}`} class="link-item text-xs">
+    <a href={`mailto:${siteConfig.social.email}`} aria-label="Email" class="link-item text-xs">
       <span class="link-icon glow-pink">✉</span>
       <span class="link-label">EMAIL</span>
     </a>
-    <a href={siteConfig.social.linkedin} target="_blank" rel="noopener" class="link-item text-xs">
+    <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="link-item text-xs">
       <span class="link-icon glow-cyan">in</span>
       <span class="link-label">LINKEDIN</span>
     </a>
-    <a href={siteConfig.social.github} target="_blank" rel="noopener" class="link-item text-xs">
+    <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="link-item text-xs">
       <span class="link-icon glow-violet">gh</span>
       <span class="link-label">GITHUB</span>
     </a>
@@ -25,7 +25,8 @@ import { siteConfig } from '../config/site';
 </BaseLayout>
 
 <style>
-h1 { margin-bottom: 4px; }
+.page-title { margin-bottom: 4px; }
+.subtitle { color: var(--dim); margin-bottom: 20px; display: block; }
 .links { margin-top: 8px; }
 .link-item {
   display: flex;
