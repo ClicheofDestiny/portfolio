@@ -47,4 +47,5 @@
 @media (prefers-reduced-motion: reduce) {
   .crt::after, .crt::before { display: none; }
   .glow-cyan, .glow-violet, .glow-pink, .glow-gold { text-shadow: none; }
+  .screen-glow { box-shadow: none; }
 }
