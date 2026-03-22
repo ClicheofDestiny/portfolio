@@ -35,7 +35,7 @@ Primary goal: passive personal brand. The site should be compelling when stumble
   Main menu options (rendered inside the cabinet screen):
     [1] ABOUT ME      → /about
     [2] MY WORK       → /work
-    [3] HOW I LEAD    → /leadership
+    [3] MY STRATEGY    → /leadership
     [4] WRITING       → /writing
     [5] CONTACT       → /contact
 

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(C:/Users/justin.keevers/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/scripts/start-server.sh --project-dir C:/Portfolio)",
+      "Bash(git -C /c/Portfolio status)",
+      "Bash(npm create:*)",
+      "Bash(cp:*)",
+      "Bash(npm install:*)",
+      "Bash(git:*)",
+      "Bash(node:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); pkgs=[''''astro'''',''''@astrojs/vue'''',''''vue'''',''''vitest'''',''''@vitejs/plugin-vue'''',''''@vue/test-utils'''',''''happy-dom'''',''''@fontsource/press-start-2p'''']; [print\\(k, d[''''packages''''].get\\(''''node_modules/''''+k,{}\\).get\\(''''version'''',''''?''''\\)\\) for k in pkgs]\")",
+      "Bash(npm test:*)",
+      "Bash(timeout 30 npm run dev)",
+      "Bash(npm run:*)",
+      "Bash(cat /c/Portfolio/src/content/blog/*.md)",
+      "Bash(grep -A3 '\"\"engines\"\"' package.json)"
+    ]
+  }
+}
