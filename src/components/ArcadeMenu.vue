@@ -9,12 +9,14 @@ function move(dir: 1 | -1) {
   selectedIndex.value = (selectedIndex.value + dir + len) % len;
 }
 
+function navigate(href: string) {
+  window.location.href = href;
+}
+
 function handleKeydown(e: KeyboardEvent) {
   if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
   if (e.key === 'ArrowUp')   { e.preventDefault(); move(-1); }
-  if (e.key === 'Enter') {
-    window.location.href = siteConfig.nav[selectedIndex.value].href;
-  }
+  if (e.key === 'Enter') { navigate(siteConfig.nav[selectedIndex.value].href); }
 }
 
 onMounted(() => {
@@ -33,10 +35,10 @@ onUnmounted(() => {
         v-for="(item, i) in siteConfig.nav"
         :key="item.href"
         role="menuitem"
-        :aria-selected="i === selectedIndex ? 'true' : 'false'"
+        :aria-current="i === selectedIndex ? 'true' : undefined"
         class="menu-item text-xs"
         :class="{ active: i === selectedIndex }"
-        @click="() => (window.location.href = item.href)"
+        @click="() => navigate(item.href)"
         @mouseenter="selectedIndex = i"
         tabindex="0"
       >
