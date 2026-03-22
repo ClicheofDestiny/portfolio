@@ -1,0 +1,32 @@
+---
+interface Props { text: string; }
+const { text } = Astro.props;
+---
+<div class="marquee" aria-hidden="true">
+  <span>{text}&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;{text}</span>
+</div>
+
+<style>
+.marquee {
+  background: linear-gradient(90deg, var(--violet), var(--cyan), var(--pink), var(--violet));
+  background-size: 300% 100%;
+  animation: marquee-flow 4s linear infinite;
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes marquee-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { animation: none; background: var(--violet); color: var(--white); }
+}
+</style>

@@ -1,0 +1,86 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Marquee from '../components/Marquee.astro';
+import CabinetControls from '../components/CabinetControls.astro';
+import { siteConfig } from '../config/site';
+import '../styles/global.css';
+import '../styles/crt.css';
+import '../styles/typography.css';
+import '../styles/transitions.css';
+
+interface Props {
+  title: string;
+  screenTitle?: string;
+}
+const { title, screenTitle } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} | {siteConfig.name}</title>
+  <ViewTransitions />
+</head>
+<body>
+  <div class="cabinet">
+    <Marquee text={siteConfig.marquee} />
+
+    <div class="bezel">
+      {screenTitle && (
+        <div class="screen-title text-xxs label glow-violet">{screenTitle}</div>
+      )}
+      <div class="screen crt screen-glow" transition:name="main-screen" transition:animate="none">
+        <div class="screen-inner">
+          <slot />
+        </div>
+      </div>
+    </div>
+
+    <CabinetControls />
+
+    <div class="coin-slot text-xxs label">— INSERT COIN TO CONTINUE —</div>
+  </div>
+</body>
+</html>
+
+<style>
+.cabinet {
+  width: 100%;
+  max-width: 600px;
+  background: linear-gradient(160deg, var(--chrome) 0%, var(--bezel) 50%, var(--cabinet) 100%);
+  border-radius: 18px 18px 8px 8px;
+  border: 2px solid var(--border);
+  box-shadow:
+    0 0 0 1px rgba(123,45,255,0.3),
+    0 0 40px rgba(47,255,255,0.1),
+    0 0 80px rgba(123,45,255,0.08);
+  overflow: hidden;
+}
+.bezel {
+  padding: 14px;
+  background: var(--bezel);
+  border-bottom: 2px solid var(--border);
+}
+.screen-title {
+  color: var(--violet);
+  margin-bottom: 6px;
+}
+.screen {
+  background: #00000f;
+  border-radius: 5px;
+  border: 2px solid #111130;
+  min-height: 360px;
+}
+.screen-inner {
+  padding: 24px 20px;
+  position: relative;
+  z-index: 2;
+}
+.coin-slot {
+  text-align: center;
+  padding: 8px;
+  color: var(--dim);
+  border-top: 1px solid var(--border);
+}
+</style>
