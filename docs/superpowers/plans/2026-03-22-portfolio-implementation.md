@@ -1431,6 +1431,8 @@ git commit -m "feat: add placeholder content pages (about, work, leadership, con
 
 ## Task 8: Blog — Level Select + Post Pages
 
+**Astro 6 note:** The content collection uses the `glob()` loader (migrated in Task 4). With the glob loader, entries no longer have a `slug` property — they have an `id` property (the filename without extension, e.g. `01-placeholder-post`). The `getStaticPaths` and `LevelSelect` implementations in this task must use `post.id` instead of `post.slug` everywhere.
+
 **Files:**
 - Create: `src/components/LevelSelect.vue`
 - Create: `src/pages/writing/index.astro`
