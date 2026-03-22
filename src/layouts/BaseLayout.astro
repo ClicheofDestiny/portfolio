@@ -3,6 +3,7 @@ import { ClientRouter } from 'astro:transitions';
 import Marquee from '../components/Marquee.astro';
 import CabinetControls from '../components/CabinetControls.astro';
 import { siteConfig } from '../config/site';
+import KonamiListener from '../components/KonamiListener.vue';
 import '../styles/global.css';
 import '../styles/crt.css';
 import '../styles/typography.css';
@@ -23,6 +24,7 @@ const { title, screenTitle } = Astro.props;
   <ClientRouter />
 </head>
 <body>
+  <KonamiListener client:load>
   <div class="cabinet">
     <Marquee text={siteConfig.marquee} />
 
@@ -41,6 +43,7 @@ const { title, screenTitle } = Astro.props;
 
     <div class="coin-slot text-xxs label">— INSERT COIN TO CONTINUE —</div>
   </div>
+  </KonamiListener>
 </body>
 </html>
 
