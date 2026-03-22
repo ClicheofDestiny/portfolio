@@ -2,9 +2,10 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import LevelSelect from '../../components/LevelSelect.vue';
+import type { Stage } from '../../components/LevelSelect.vue';
 
 const allPosts = await getCollection('blog');
-const stages = allPosts
+const stages: Stage[] = allPosts
   .sort((a, b) => a.data.stage - b.data.stage)
   .map(post => ({
     slug: post.id,

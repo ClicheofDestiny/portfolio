@@ -15,7 +15,7 @@ describe('LevelSelect', () => {
 
   it('shows title for published stages', () => {
     const wrapper = mount(LevelSelect, { props: { stages } });
-    expect(wrapper.text()).toContain('POST ONE');
+    expect(wrapper.text()).toContain('Post One');
   });
 
   it('shows ??? for unpublished stages', () => {
@@ -25,7 +25,7 @@ describe('LevelSelect', () => {
 
   it('shows XP value for published stages', () => {
     const wrapper = mount(LevelSelect, { props: { stages } });
-    expect(wrapper.text()).toContain('200');
+    expect(wrapper.find('.stage-xp').text()).toContain('200');
   });
 
   it('published stages have a link, locked stages do not', () => {
