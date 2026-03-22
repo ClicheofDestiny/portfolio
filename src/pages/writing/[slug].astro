@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.published);
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<BaseLayout title={post.data.title} screenTitle={`STAGE ${String(post.data.stage).padStart(2,'0')}`}>
+  <div class="post-header">
+    <h1 class="page-title text-md glow-cyan">{post.data.title.toUpperCase()}</h1>
+    <div class="post-meta text-xxs">
+      <span class="glow-violet">{post.data.category.toUpperCase()}</span>
+      <span class="meta-dim"> · {post.data.date.toISOString().slice(0,10)}</span>
+      <span class="glow-gold"> · +{post.data.xp} XP</span>
+    </div>
+  </div>
+
+  <div class="post-body text-xs">
+    <Content />
+  </div>
+
+  <a href="/writing" class="back-link text-xxs">← BACK TO LEVEL SELECT</a>
+</BaseLayout>
+
+<style>
+.post-header { margin-bottom: 16px; }
+.page-title { margin-bottom: 6px; }
+.post-meta { margin-bottom: 0; }
+.meta-dim { color: var(--dim); }
+.post-body { line-height: 2; color: var(--white); opacity: 0.9; }
+.post-body :global(h2) { color: var(--cyan); font-size: 9px; margin: 16px 0 8px; }
+.post-body :global(h3) { color: var(--violet); font-size: 8px; margin: 12px 0 6px; }
+.post-body :global(p)  { margin-bottom: 12px; }
+.post-body :global(code) {
+  background: rgba(47,255,255,0.06);
+  border: 1px solid rgba(47,255,255,0.15);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-family: var(--font-pixel);
+  font-size: 7px;
+}
+.post-body :global(pre) {
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px;
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+.post-body :global(img) {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+.back-link { color: var(--violet); display: inline-block; margin-top: 20px; }
+</style>

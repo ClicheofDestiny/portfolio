@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LevelSelect from '../../components/LevelSelect.vue';
+
+const allPosts = await getCollection('blog');
+const stages = allPosts
+  .sort((a, b) => a.data.stage - b.data.stage)
+  .map(post => ({
+    slug: post.id,
+    title: post.data.title,
+    stage: post.data.stage,
+    published: post.data.published,
+    xp: post.data.xp,
+    category: post.data.category,
+    date: post.data.date.toISOString().slice(0, 10),
+  }));
+---
+<BaseLayout title="Writing" screenTitle="LEVEL SELECT">
+  <LevelSelect client:load stages={stages} />
+  <a href="/" class="back-link text-xxs">← BACK TO MENU</a>
+</BaseLayout>
+
+<style>
+.back-link { color: var(--violet); display: inline-block; margin-top: 16px; }
+</style>
