@@ -6,7 +6,9 @@
 
 **Architecture:** Astro handles routing and static generation. Vue 3 components handle all interactive state (attract mode, menus, blog level select, easter egg). Every page shares a single `BaseLayout.astro` that renders the cabinet chrome (marquee, bezel, CRT effects, controls). Page-to-page navigation uses the Astro View Transitions API with a custom CRT flicker animation.
 
-**Tech Stack:** Astro 4, Vue 3, hand-written CSS, `@fontsource/press-start-2p`, Vitest + Vue Test Utils, Vercel
+**Tech Stack:** Astro 6, Vue 3, hand-written CSS, `@fontsource/press-start-2p`, Vitest + Vue Test Utils, Vercel
+
+**Note on @astrojs/vue v6:** The `appEntrypoint` option was removed. Use the `app` option instead if registering global Vue plugins (e.g. `app({ app } => { app.use(plugin) })`). The plan tasks do not require global Vue plugin registration so this should not arise, but be aware if debugging integration issues.
 
 ---
 
