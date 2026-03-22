@@ -9,6 +9,7 @@ function handleStart() {
 }
 
 function handleKeydown() {
+  window.removeEventListener('keydown', handleKeydown);
   emit('start');
 }
 
