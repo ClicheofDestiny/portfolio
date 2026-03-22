@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="My Work" screenTitle="GAME HISTORY">
+  <h1 class="text-md glow-cyan">GAME HISTORY</h1>
+  <p class="text-xxs" style="color:var(--dim);margin-bottom:16px;">MISSIONS COMPLETED</p>
+
+  <div class="timeline">
+    <!-- PLACEHOLDER: Replace each mission with real experience -->
+    <div class="mission">
+      <div class="mission-header text-xs">
+        <span class="company glow-pink">COMPANY NAME</span>
+        <span class="dates text-xxs">2022 – NOW</span>
+      </div>
+      <div class="role text-xxs glow-violet">ENGINEERING MANAGER</div>
+      <p class="impact text-xxs"><!-- PLACEHOLDER: 1–3 lines of impact --></p>
+    </div>
+
+    <div class="mission">
+      <div class="mission-header text-xs">
+        <span class="company glow-pink">COMPANY NAME</span>
+        <span class="dates text-xxs">2019 – 2022</span>
+      </div>
+      <div class="role text-xxs glow-violet">SENIOR SOFTWARE ENGINEER</div>
+      <p class="impact text-xxs"><!-- PLACEHOLDER: 1–3 lines of impact --></p>
+    </div>
+  </div>
+
+  <a href="/" class="back-link text-xxs">← BACK TO MENU</a>
+</BaseLayout>
+
+<style>
+h1 { margin-bottom: 4px; }
+.timeline { margin-top: 8px; }
+.mission {
+  border: 1px solid rgba(47,255,255,0.15);
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: rgba(47,255,255,0.02);
+}
+.mission-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.company { color: var(--pink); }
+.dates { color: var(--dim); }
+.role { margin-bottom: 6px; }
+.impact { color: var(--white); opacity: 0.75; line-height: 2; }
+.back-link { color: var(--violet); display: inline-block; margin-top: 16px; }
+</style>

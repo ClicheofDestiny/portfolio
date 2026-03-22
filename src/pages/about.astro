@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="About" screenTitle="PLAYER PROFILE">
+  <section class="page-section">
+    <h1 class="text-md glow-cyan">PLAYER PROFILE</h1>
+
+    <div class="stat-block">
+      <div class="stat-row text-xs">
+        <span class="stat-key">NAME</span>
+        <span class="stat-val">JUSTIN KEEVERS</span>
+      </div>
+      <div class="stat-row text-xs">
+        <span class="stat-key">CLASS</span>
+        <span class="stat-val">ENGINEERING LEADER</span>
+      </div>
+      <div class="stat-row text-xs">
+        <span class="stat-key">EXP</span>
+        <span class="stat-val glow-gold">10+ YRS</span>
+      </div>
+    </div>
+
+    <div class="bio text-xs">
+      <!-- PLACEHOLDER: Replace with your story -->
+      <p>I build teams that ship. Not just code — products people actually use.</p>
+      <p>The engineering part comes naturally. The people part took longer to learn.</p>
+    </div>
+
+    <div class="values">
+      <h2 class="text-xs glow-violet">CORE STATS</h2>
+      <!-- PLACEHOLDER: Replace with your values -->
+      <div class="value-item text-xxs">★ TEAMS OVER INDIVIDUALS</div>
+      <div class="value-item text-xxs">★ SHIP IT, THEN IMPROVE IT</div>
+      <div class="value-item text-xxs">★ FEEDBACK IS A GIFT</div>
+    </div>
+  </section>
+
+  <a href="/" class="back-link text-xxs">← BACK TO MENU</a>
+</BaseLayout>
+
+<style>
+.page-section { margin-bottom: 20px; }
+h1 { margin-bottom: 16px; }
+.stat-block {
+  background: rgba(47,255,255,0.04);
+  border: 1px solid rgba(47,255,255,0.15);
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+.stat-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.stat-key { color: var(--dim); }
+.stat-val { color: var(--white); }
+.bio p { margin-bottom: 12px; color: var(--white); opacity: 0.85; }
+.values h2 { margin-bottom: 10px; }
+.value-item { color: var(--cyan); margin-bottom: 6px; }
+.back-link { color: var(--violet); display: inline-block; margin-top: 16px; }
+</style>

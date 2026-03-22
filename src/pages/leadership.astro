@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="How I Lead" screenTitle="HOW I PLAY">
+  <h1 class="text-md glow-cyan">HOW I PLAY</h1>
+
+  <div class="moves">
+    <!-- PLACEHOLDER: Replace with your real leadership principles -->
+    <div class="move">
+      <h2 class="move-name text-xs glow-violet">MOVE 01: TRUST FIRST</h2>
+      <p class="move-desc text-xxs"><!-- PLACEHOLDER: Short description of this principle --></p>
+    </div>
+
+    <div class="move">
+      <h2 class="move-name text-xs glow-violet">MOVE 02: CLEAR THE PATH</h2>
+      <p class="move-desc text-xxs"><!-- PLACEHOLDER: Short description --></p>
+    </div>
+
+    <div class="move">
+      <h2 class="move-name text-xs glow-violet">MOVE 03: SHIP IT</h2>
+      <p class="move-desc text-xxs"><!-- PLACEHOLDER: Short description --></p>
+    </div>
+  </div>
+
+  <a href="/" class="back-link text-xxs">← BACK TO MENU</a>
+</BaseLayout>
+
+<style>
+h1 { margin-bottom: 16px; }
+.move {
+  border-left: 2px solid var(--violet);
+  padding: 8px 12px;
+  margin-bottom: 12px;
+}
+.move-name { margin-bottom: 6px; }
+.move-desc { color: var(--white); opacity: 0.8; }
+.back-link { color: var(--violet); display: inline-block; margin-top: 16px; }
+</style>

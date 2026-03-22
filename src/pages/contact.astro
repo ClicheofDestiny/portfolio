@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+---
+<BaseLayout title="Contact" screenTitle="INSERT COIN">
+  <h1 class="text-md glow-cyan">INSERT COIN</h1>
+  <p class="text-xxs" style="color:var(--dim);margin-bottom:20px;">READY TO CONNECT?</p>
+
+  <div class="links">
+    <a href={`mailto:${siteConfig.social.email}`} class="link-item text-xs">
+      <span class="link-icon glow-pink">✉</span>
+      <span class="link-label">EMAIL</span>
+    </a>
+    <a href={siteConfig.social.linkedin} target="_blank" rel="noopener" class="link-item text-xs">
+      <span class="link-icon glow-cyan">in</span>
+      <span class="link-label">LINKEDIN</span>
+    </a>
+    <a href={siteConfig.social.github} target="_blank" rel="noopener" class="link-item text-xs">
+      <span class="link-icon glow-violet">gh</span>
+      <span class="link-label">GITHUB</span>
+    </a>
+  </div>
+
+  <a href="/" class="back-link text-xxs">← BACK TO MENU</a>
+</BaseLayout>
+
+<style>
+h1 { margin-bottom: 4px; }
+.links { margin-top: 8px; }
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid rgba(47,255,255,0.15);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  color: var(--white);
+  transition: background 0.15s;
+}
+.link-item:hover { background: rgba(47,255,255,0.06); text-decoration: none; }
+.link-icon { width: 20px; text-align: center; }
+.back-link { color: var(--violet); display: inline-block; margin-top: 16px; }
+</style>
