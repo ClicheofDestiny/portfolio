@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AttractMode from '../components/AttractMode.vue';
 ---
 <BaseLayout title="Home">
-  <p class="text-sm glow-cyan">Cabinet is working.</p>
+  <AttractMode client:load />
+  {/* TODO Task 6: replace with HomeScreen.vue for attract → menu state machine */}
 </BaseLayout>
