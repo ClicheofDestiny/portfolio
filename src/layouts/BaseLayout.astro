@@ -61,7 +61,7 @@ const { title, screenTitle } = Astro.props;
   overflow: hidden;
 }
 .bezel {
-  padding: 14px;
+  padding: clamp(8px, 2vw, 14px);
   background: var(--bezel);
   border-bottom: 2px solid var(--border);
 }
@@ -73,10 +73,10 @@ const { title, screenTitle } = Astro.props;
   background: #00000f;
   border-radius: 5px;
   border: 2px solid #111130;
-  min-height: 360px;
+  min-height: clamp(260px, 45vh, 360px);
 }
 .screen-inner {
-  padding: 24px 20px;
+  padding: clamp(12px, 3vw, 24px) clamp(10px, 2.5vw, 20px);
   position: relative;
   z-index: 2;
 }
@@ -89,8 +89,6 @@ const { title, screenTitle } = Astro.props;
 
 @media (max-width: 479px) {
   .cabinet { border-radius: 10px 10px 4px 4px; }
-  .bezel   { padding: 8px; }
-  .screen-inner { padding: 16px 12px; }
 }
 
 @media (min-width: 1200px) {

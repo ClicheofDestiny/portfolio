@@ -9,8 +9,15 @@
 .text-xs   { font-size: 7px;  line-height: 2; }
 .text-xxs  { font-size: 6px;  line-height: 2; }
 
-/* Scale down the two largest sizes on small screens */
-@media (max-width: 479px) {
+/* Scale down large sizes on small screens — integer sizes only (bitmap font) */
+@media (max-width: 359px) {
+  .text-xxl { font-size: 14px; }
+  .text-xl  { font-size: 11px; }
+  .text-lg  { font-size: 9px;  }
+  .text-md  { font-size: 8px;  }
+}
+
+@media (min-width: 360px) and (max-width: 479px) {
   .text-xxl { font-size: 18px; }
   .text-xl  { font-size: 14px; }
   .text-lg  { font-size: 11px; }
