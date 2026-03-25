@@ -3,14 +3,23 @@ import { ref } from 'vue';
 import AttractMode from './AttractMode.vue';
 import ArcadeMenu from './ArcadeMenu.vue';
 
-// Show menu directly only if the user already pressed start this session
-// (e.g. they navigated to a project and came back).
-const showMenu = ref(
-  typeof window !== 'undefined' && sessionStorage.getItem('started') === '1'
-);
+// Skip attract mode only when the user arrived from within this site
+// (back/forward navigation or an internal link). Fresh visits and
+// refreshes always show attract mode.
+function cameFromWithinSite(): boolean {
+  if (typeof window === 'undefined') return false;
+  const navType = (performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined)?.type;
+  if (navType === 'back_forward') return true;
+  try {
+    return !!document.referrer && new URL(document.referrer).origin === window.location.origin;
+  } catch {
+    return false;
+  }
+}
+
+const showMenu = ref(cameFromWithinSite());
 
 function onStart() {
-  if (typeof window !== 'undefined') sessionStorage.setItem('started', '1');
   showMenu.value = true;
 }
 </script>
