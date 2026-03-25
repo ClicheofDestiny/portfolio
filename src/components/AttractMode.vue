@@ -63,7 +63,7 @@ onUnmounted(() => {
   border-radius: 4px;
   padding: 12px;
   margin: 0 auto 20px;
-  max-width: 320px;
+  max-width: min(320px, 100%);
 }
 .scores-label { color: var(--cyan); margin-bottom: 10px; display: block; }
 .score-row {
