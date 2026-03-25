@@ -4,17 +4,19 @@ import { siteConfig } from '../config/site';
 
 const emit = defineEmits<{ start: [] }>();
 
-function handleStart() {
-  emit('start');
+function handleClick(e: MouseEvent) {
+  if (e.button === 0) emit('start');
 }
 
-function handleKeydown() {
-  window.removeEventListener('keydown', handleKeydown);
-  emit('start');
+function handleKeydown(e: KeyboardEvent) {
+  if (e.key === 'Enter') {
+    window.removeEventListener('keydown', handleKeydown);
+    emit('start');
+  }
 }
 
 onMounted(() => {
-  window.addEventListener('keydown', handleKeydown, { once: true });
+  window.addEventListener('keydown', handleKeydown);
 });
 
 onUnmounted(() => {
@@ -23,7 +25,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="attract" @click="handleStart" @keydown="handleKeydown" tabindex="0" role="button" aria-label="Press any key to start">
+  <div class="attract" @click="handleClick" tabindex="0" role="button" aria-label="Press Enter or click to start">
     <div class="title-line1 text-xxl glow-cyan">{{ siteConfig.name.split(' ')[0].toUpperCase() }}</div>
     <div class="title-line2 text-lg glow-violet">{{ siteConfig.name.split(' ')[1].toUpperCase() }}</div>
     <div class="tagline text-xxs label glow-pink">★ {{ siteConfig.tagline.toUpperCase() }} ★</div>
@@ -41,7 +43,7 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <div class="press-start text-xs blink">▶ PRESS START ◀</div>
+    <div class="press-start text-xs blink">▶ PRESS ENTER TO START ◀</div>
   </div>
 </template>
 
