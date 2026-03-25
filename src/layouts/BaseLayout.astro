@@ -50,8 +50,8 @@ const { title, screenTitle } = Astro.props;
 <style>
 .cabinet {
   width: 100%;
-  /* Grows from 600px at normal desktop up to 960px at ultra-wide */
-  max-width: clamp(600px, 50vw, 960px);
+  /* Mobile: fills available width. Desktop+: grows from 600px to 960px. */
+  max-width: min(100%, clamp(600px, 50vw, 960px));
   background: linear-gradient(160deg, var(--chrome) 0%, var(--bezel) 50%, var(--cabinet) 100%);
   border-radius: 18px 18px 8px 8px;
   border: 2px solid var(--border);
