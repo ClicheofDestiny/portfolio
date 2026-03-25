@@ -9,6 +9,7 @@ import ArcadeMenu from './ArcadeMenu.vue';
 function cameFromWithinSite(): boolean {
   if (typeof window === 'undefined') return false;
   const navType = (performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined)?.type;
+  if (navType === 'reload') return false;
   if (navType === 'back_forward') return true;
   try {
     return !!document.referrer && new URL(document.referrer).origin === window.location.origin;
