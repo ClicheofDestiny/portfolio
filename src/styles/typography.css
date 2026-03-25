@@ -23,6 +23,24 @@
   .text-lg  { font-size: 11px; }
 }
 
+/* Scale up on widescreen — integer sizes only (bitmap font) */
+@media (min-width: 1200px) {
+  .text-xxl { font-size: 28px; }
+  .text-xl  { font-size: 22px; }
+  .text-lg  { font-size: 16px; }
+  .text-md  { font-size: 12px; }
+}
+
+@media (min-width: 1600px) {
+  .text-xxl  { font-size: 32px; }
+  .text-xl   { font-size: 24px; }
+  .text-lg   { font-size: 18px; }
+  .text-md   { font-size: 14px; }
+  .text-base { font-size: 11px; }
+  .text-xs   { font-size: 9px;  }
+  .text-xxs  { font-size: 8px;  }
+}
+
 /* Letter spacing for all-caps labels */
 .label { letter-spacing: 2px; }
 

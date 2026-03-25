@@ -50,7 +50,8 @@ const { title, screenTitle } = Astro.props;
 <style>
 .cabinet {
   width: 100%;
-  max-width: 600px;
+  /* Grows from 600px at normal desktop up to 960px at ultra-wide */
+  max-width: clamp(600px, 50vw, 960px);
   background: linear-gradient(160deg, var(--chrome) 0%, var(--bezel) 50%, var(--cabinet) 100%);
   border-radius: 18px 18px 8px 8px;
   border: 2px solid var(--border);
@@ -73,10 +74,10 @@ const { title, screenTitle } = Astro.props;
   background: #00000f;
   border-radius: 5px;
   border: 2px solid #111130;
-  min-height: clamp(260px, 45vh, 360px);
+  min-height: clamp(260px, 45vh, 520px);
 }
 .screen-inner {
-  padding: clamp(12px, 3vw, 24px) clamp(10px, 2.5vw, 20px);
+  padding: clamp(12px, 3vw, 36px) clamp(10px, 2.5vw, 32px);
   position: relative;
   z-index: 2;
 }
@@ -91,7 +92,4 @@ const { title, screenTitle } = Astro.props;
   .cabinet { border-radius: 10px 10px 4px 4px; }
 }
 
-@media (min-width: 1200px) {
-  .cabinet { max-width: 680px; }
-}
 </style>
