@@ -58,7 +58,6 @@ onUnmounted(() => {
   margin-bottom: 4px;
   font-family: var(--font-tron);
   font-weight: 900;
-  font-style: italic;
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }

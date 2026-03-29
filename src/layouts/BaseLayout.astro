@@ -27,7 +27,7 @@ const { title, screenTitle } = Astro.props;
   <KonamiListener client:load>
   <div class="cabinet">
     <div class="cabinet-header" aria-hidden="true">
-      <svg class="cabinet-title" viewBox="0 0 620 130" xmlns="http://www.w3.org/2000/svg">
+      <svg class="cabinet-title" viewBox="0 0 775 130" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="title-fill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%"   stop-color="#09071f"/>
@@ -46,6 +46,9 @@ const { title, screenTitle } = Astro.props;
             <stop offset="100%" stop-color="#b94741"/>
           </linearGradient>
         </defs>
+        <!-- crosshair centred on S -->
+        <line x1="338" y1="-20" x2="338" y2="150" stroke="#00bb33" stroke-width="1"/>
+        <line x1="-20" y1="67"  x2="795" y2="67"  stroke="#00bb33" stroke-width="1"/>
         <text
           x="50%" y="90%"
           text-anchor="middle"
@@ -85,8 +88,7 @@ const { title, screenTitle } = Astro.props;
 .cabinet-header {
   background: #0a0a0a;
   border-bottom: 2px solid #1a1a1a;
-  padding: clamp(14px, 3vw, 28px) 16px;
-  text-align: center;
+  padding: 0;
   position: relative;
 }
 .cabinet-header::before,
@@ -103,10 +105,9 @@ const { title, screenTitle } = Astro.props;
 .cabinet-header::after  { bottom: 5px; }
 .cabinet-title {
   display: block;
-  width: 80%;
+  width: 100%;
   height: auto;
   overflow: visible;
-  margin: 0 auto;
 }
 .cabinet {
   width: 100%;
