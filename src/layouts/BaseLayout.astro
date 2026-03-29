@@ -26,7 +26,7 @@ const { title, screenTitle } = Astro.props;
 <body>
   <KonamiListener client:load>
   <div class="cabinet">
-    <div class="cabinet-header" aria-hidden="true">
+    <a href="/" class="cabinet-header" aria-label="Home">
       <svg class="cabinet-title" viewBox="0 0 775 130" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="title-fill" x1="0" y1="0" x2="0" y2="1">
@@ -62,7 +62,7 @@ const { title, screenTitle } = Astro.props;
           paint-order="stroke fill"
         >{siteConfig.name.split(' ')[0].toUpperCase()}</text>
       </svg>
-    </div>
+    </a>
     <Marquee text={siteConfig.marquee} />
 
     <div class="bezel">
@@ -86,6 +86,9 @@ const { title, screenTitle } = Astro.props;
 
 <style>
 .cabinet-header {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
   background: #0a0a0a;
   border-bottom: 2px solid #1a1a1a;
   padding: 0;

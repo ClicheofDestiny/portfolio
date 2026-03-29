@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Justin Keevers',
-  tagline: 'Engineering Leader',
-  marquee: '★ JUSTIN KEEVERS ★ ENGINEERING LEADER ★ INSERT COIN ★',
+  tagline: 'Engineering Manager',
+  marquee: 'ENGINEERING MANAGER | TECH LEADER | WRITER',
 
   highScores: [
     { rank: '1ST', label: 'TEAMS GROWN', value: '×12' },
@@ -18,8 +18,8 @@ export const siteConfig = {
   ],
 
   social: {
-    linkedin: 'https://linkedin.com/in/justinkeevers',
-    github: 'https://github.com/justinkeevers',
-    email: 'hello@justinkeevers.com',
+    linkedin: 'https://www.linkedin.com/in/justin-keevers-96255991/',
+    github: 'https://github.com/ClicheofDestiny',
+    email: 'jpkeevers@gmail.com',
   },
 } as const;
