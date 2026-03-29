@@ -13,7 +13,15 @@
       "Bash(timeout 30 npm run dev)",
       "Bash(npm run:*)",
       "Bash(cat /c/Portfolio/src/content/blog/*.md)",
-      "Bash(grep -A3 '\"\"engines\"\"' package.json)"
+      "Bash(grep -A3 '\"\"engines\"\"' package.json)",
+      "Bash(nvm version:*)",
+      "Bash(nvm list:*)",
+      "Bash(winget install:*)",
+      "Bash(cmd.exe /c \"winget install OpenJS.NodeJS.LTS\" 2>&1)",
+      "Bash(gh api:*)",
+      "Bash(python3 -c \"import sys,base64; print\\(base64.b64decode\\(sys.stdin.read\\(\\).replace\\(''''\\\\n'''',''''''''\\)\\).decode\\(\\)\\)\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl:*)"
     ]
   }
 }
