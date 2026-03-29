@@ -224,7 +224,7 @@ Create `src/config/site.ts`:
 export const siteConfig = {
   name: 'Justin Keevers',
   tagline: 'Engineering Leader',
-  marquee: '★ JUSTIN KEEVERS ★ ENGINEERING LEADER ★ INSERT COIN ★',
+  marquee: '★ ENGINEERING MANAGER ★ DEVELOPER ★ TECHNOLOGIST ★ -- INSERT COIN -- ★',
 
   highScores: [
     { rank: '1ST', label: 'TEAMS GROWN', value: '×12' },
