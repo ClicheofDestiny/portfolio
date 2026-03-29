@@ -1,5 +1,13 @@
 /* @fontsource handles the @font-face declaration — just import it */
 @import '@fontsource/press-start-2p';
+@import '@fontsource/orbitron/900.css';
+
+@font-face {
+  font-family: 'TRON';
+  src: url('/fonts/TRON.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
   --bg:        #0f0f1f;
@@ -16,6 +24,7 @@
   --dim:       #3a3a6a;
 
   --font-pixel: 'Press Start 2P', monospace;
+  --font-tron: 'TRON', 'Orbitron', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

@@ -54,7 +54,14 @@ onUnmounted(() => {
   cursor: pointer;
   outline: none;
 }
-.title-line1 { margin-bottom: 4px; }
+.title-line1 {
+  margin-bottom: 4px;
+  font-family: var(--font-tron);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
 .title-line2 { margin-bottom: 8px; }
 .tagline { margin-bottom: 20px; }
 .high-scores {

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@astrojs/vue": "^6.0.1",
+    "@fontsource/orbitron": "^5.2.8",
     "@fontsource/press-start-2p": "^5.2.7",
     "astro": "^6.0.8",
     "vue": "^3.5.30"

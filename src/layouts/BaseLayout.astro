@@ -26,6 +26,40 @@ const { title, screenTitle } = Astro.props;
 <body>
   <KonamiListener client:load>
   <div class="cabinet">
+    <div class="cabinet-header" aria-hidden="true">
+      <svg class="cabinet-title" viewBox="0 0 620 130" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="title-fill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%"   stop-color="#09071f"/>
+            <stop offset="45%"   stop-color="#09071f"/>
+            <stop offset="55%"  stop-color="#33284a"/>
+            <stop offset="70%"  stop-color="#8fa8cc"/>
+            <stop offset="100%" stop-color="#c8daf2"/>
+          </linearGradient>
+          <radialGradient id="title-stroke" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+            <stop offset="0%"   stop-color="#cc2200"/>
+            <stop offset="10%" stop-color="#ddafd3"/>
+            <stop offset="20%" stop-color="#cc2200"/>
+            <stop offset="50%" stop-color="#ddafd3"/>
+            <stop offset="60%" stop-color="#cc2200"/>
+            <stop offset="90%" stop-color="#ddafd3"/>
+            <stop offset="100%" stop-color="#b94741"/>
+          </linearGradient>
+        </defs>
+        <text
+          x="50%" y="95"
+          text-anchor="middle"
+          font-family="TRON, Orbitron, sans-serif"
+          font-size="100"
+          font-weight="900"
+          letter-spacing="4"
+          fill="url(#title-fill)"
+          stroke="url(#title-stroke)"
+          stroke-width="8"
+          paint-order="stroke fill"
+        >{siteConfig.name.split(' ')[0].toUpperCase()}</text>
+      </svg>
+    </div>
     <Marquee text={siteConfig.marquee} />
 
     <div class="bezel">
@@ -48,6 +82,31 @@ const { title, screenTitle } = Astro.props;
 </html>
 
 <style>
+.cabinet-header {
+  background: #0a0a0a;
+  border-bottom: 2px solid #1a1a1a;
+  padding: clamp(14px, 3vw, 28px) 16px;
+  text-align: center;
+  position: relative;
+}
+.cabinet-header::before,
+.cabinet-header::after {
+  content: '';
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--white), transparent);
+  opacity: 0.5;
+}
+.cabinet-header::before { top: 5px; }
+.cabinet-header::after  { bottom: 5px; }
+.cabinet-title {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
 .cabinet {
   width: 100%;
   /* Mobile: fills available width. Desktop+: grows from 600px to 960px. */
