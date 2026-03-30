@@ -5,18 +5,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="page-section">
     <h1 class="page-title text-md glow-cyan">PLAYER PROFILE</h1>
 
-    <div class="stat-block">
-      <div class="stat-row text-xs">
-        <span class="stat-key">NAME</span>
-        <span class="stat-val">JUSTIN KEEVERS</span>
+    <div class="character-card">
+      <div class="portrait-frame">
+        <img src="/JustinTransparent.png" alt="Justin Keevers" class="portrait" />
       </div>
-      <div class="stat-row text-xs">
-        <span class="stat-key">CLASS</span>
-        <span class="stat-val">ENGINEERING LEADER</span>
-      </div>
-      <div class="stat-row text-xs">
-        <span class="stat-key">EXP</span>
-        <span class="stat-val glow-gold">10+ YRS</span>
+
+      <div class="stat-block">
+        <div class="stat-row text-xs">
+          <span class="stat-key">NAME</span>
+          <span class="stat-val">JUSTIN KEEVERS</span>
+        </div>
+        <div class="stat-row text-xs">
+          <span class="stat-key">CLASS</span>
+          <span class="stat-val">ENGINEERING LEADER</span>
+        </div>
+        <div class="stat-row text-xs">
+          <span class="stat-key">EXP</span>
+          <span class="stat-val glow-gold">10+ YRS</span>
+        </div>
       </div>
     </div>
 
@@ -40,15 +46,41 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <style>
 .page-section { margin-bottom: 20px; }
-.page-title { margin-bottom: 16px; }
+.page-title { margin-bottom: 12px; }
+
+/* Character card: portrait left, stats right */
+.character-card {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+.portrait-frame {
+  flex-shrink: 0;
+  width: 72px;
+  height: 88px;
+  background: rgba(47,255,255,0.04);
+  border: 1px solid rgba(47,255,255,0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .stat-block {
+  flex: 1;
   background: rgba(47,255,255,0.04);
   border: 1px solid rgba(47,255,255,0.15);
   border-radius: 4px;
-  padding: 12px;
-  margin-bottom: 16px;
+  padding: 10px;
 }
 .stat-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.stat-row:last-child { margin-bottom: 0; }
 .stat-key { color: var(--dim); }
 .stat-val { color: var(--white); }
 .bio p { margin-bottom: 12px; color: var(--white); opacity: 0.85; }
