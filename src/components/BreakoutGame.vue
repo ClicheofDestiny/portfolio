@@ -156,7 +156,8 @@ function handleMouseMove(e: MouseEvent) {
   const canvas = canvasRef.value;
   if (!canvas) return;
   const rect = canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
+  const scaleX = W / rect.width;
+  const x = (e.clientX - rect.left) * scaleX;
   paddle.x = Math.max(0, Math.min(W - paddle.width, x - paddle.width / 2));
 }
 
@@ -182,38 +183,33 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="breakout-overlay" role="dialog" aria-modal="true" aria-label="Bonus Stage: Breakout" @click.self="$emit('dismiss')">
-    <div ref="containerRef" class="breakout-container" tabindex="-1">
-      <div class="breakout-header text-xxs glow-pink">★ BONUS STAGE ★</div>
-      <div v-if="won" class="win-screen text-xs">
-        <p class="glow-gold">YOU WIN!</p>
-        <p class="win-msg">You cleared the stack.</p>
-        <p class="win-msg">Now go ship something.</p>
-        <button @click="$emit('dismiss')" class="win-btn text-xxs">← BACK</button>
-      </div>
-      <canvas
-        v-else
-        ref="canvasRef"
-        :width="W"
-        :height="H"
-        @mousemove="handleMouseMove"
-      />
+  <div ref="containerRef" class="breakout-container" role="dialog" aria-modal="true" aria-label="Bonus Stage: Breakout" tabindex="-1">
+    <div class="breakout-header text-xxs glow-pink">★ BONUS STAGE ★</div>
+    <div v-if="won" class="win-screen text-xs">
+      <p class="glow-gold">YOU WIN!</p>
+      <p class="win-msg">You cleared the stack.</p>
+      <p class="win-msg">Now go ship something.</p>
+      <button @click="$emit('dismiss')" class="win-btn text-xxs">← BACK</button>
     </div>
+    <canvas
+      v-else
+      ref="canvasRef"
+      :width="W"
+      :height="H"
+      @mousemove="handleMouseMove"
+    />
   </div>
 </template>
 
 <style scoped>
-.breakout-overlay {
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 1000;
-}
 .breakout-container {
-  border: 2px solid var(--violet);
-  border-radius: 6px;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: #00000f;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 0 40px rgba(123,45,255,0.4);
 }
 .breakout-header {
   background: var(--violet);
@@ -221,13 +217,21 @@ onUnmounted(() => {
   text-align: center;
   padding: 6px;
   letter-spacing: 2px;
+  flex-shrink: 0;
 }
-canvas { display: block; cursor: none; }
+canvas {
+  display: block;
+  cursor: none;
+  width: 100%;
+  flex: 1;
+}
 .win-screen {
-  background: #00000f;
-  width: 400px; height: 400px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 4px;
 }
 .win-msg { color: var(--dim); margin-top: 8px; }

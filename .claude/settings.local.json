@@ -21,7 +21,12 @@
       "Bash(gh api:*)",
       "Bash(python3 -c \"import sys,base64; print\\(base64.b64decode\\(sys.stdin.read\\(\\).replace\\(''''\\\\n'''',''''''''\\)\\).decode\\(\\)\\)\")",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(npx playwright:*)",
+      "Bash(pkill -f \"astro dev\")",
+      "Bash(C:/Users/justin.keevers/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.6/skills/brainstorming/scripts/start-server.sh --project-dir /c/Portfolio)",
+      "Bash(cat /c/Portfolio/.superpowers/brainstorm/*/state/server-info)",
+      "Bash(cat C:/Portfolio/.superpowers/brainstorm/*/state/server-info)"
     ]
   }
 }

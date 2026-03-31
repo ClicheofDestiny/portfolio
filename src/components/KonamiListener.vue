@@ -12,33 +12,31 @@ export function isKonamiComplete(buffer: string[]): boolean {
 </script>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, defineAsyncComponent } from 'vue';
-
-const BreakoutGame = defineAsyncComponent(() => import('./BreakoutGame.vue'));
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const buffer = ref<string[]>([]);
-const active = ref(false);
 
-function handleKeydown(e: KeyboardEvent) {
-  if (active.value) return;
-  buffer.value = [...buffer.value, e.key].slice(-KONAMI_SEQUENCE.length);
+function pushKey(key: string) {
+  buffer.value = [...buffer.value, key].slice(-KONAMI_SEQUENCE.length);
   if (isKonamiComplete(buffer.value)) {
-    active.value = true;
+    window.dispatchEvent(new CustomEvent('konami'));
     buffer.value = [];
   }
 }
 
-function dismiss() {
-  active.value = false;
-}
+function handleKeydown(e: KeyboardEvent) { pushKey(e.key); }
+function handleCabinetInput(e: Event) { pushKey((e as CustomEvent<{ key: string }>).detail.key); }
 
-onMounted(() => window.addEventListener('keydown', handleKeydown));
-onUnmounted(() => window.removeEventListener('keydown', handleKeydown));
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
+  window.addEventListener('cabinet-input', handleCabinetInput);
+});
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown);
+  window.removeEventListener('cabinet-input', handleCabinetInput);
+});
 </script>
 
 <template>
   <slot />
-  <Teleport to="body">
-    <BreakoutGame v-if="active" @dismiss="dismiss" />
-  </Teleport>
 </template>

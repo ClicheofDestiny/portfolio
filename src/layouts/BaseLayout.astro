@@ -1,9 +1,10 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import Marquee from '../components/Marquee.astro';
-import CabinetControls from '../components/CabinetControls.astro';
+import CabinetControls from '../components/CabinetControls.vue';
 import { siteConfig } from '../config/site';
 import KonamiListener from '../components/KonamiListener.vue';
+import BreakoutIsland from '../components/BreakoutIsland.vue';
 import '../styles/global.css';
 import '../styles/crt.css';
 import '../styles/typography.css';
@@ -70,13 +71,14 @@ const { title, screenTitle } = Astro.props;
         <div class="screen-title text-xxs label glow-violet">{screenTitle}</div>
       )}
       <div class="screen crt screen-glow" transition:name="main-screen" transition:animate="none">
+        <BreakoutIsland client:load />
         <div class="screen-inner">
           <slot />
         </div>
       </div>
     </div>
 
-    <CabinetControls />
+    <CabinetControls client:load />
 
     <div class="coin-slot text-xxs label">— INSERT COIN TO CONTINUE —</div>
 
@@ -149,6 +151,7 @@ const { title, screenTitle } = Astro.props;
   margin-bottom: 6px;
 }
 .screen {
+  position: relative;
   background: #00000f;
   border-radius: 5px;
   border: 2px solid #111130;
