@@ -19,11 +19,19 @@ function handleKeydown(e: KeyboardEvent) {
   if (e.key === 'Enter') { navigate(siteConfig.nav[selectedIndex.value].href); }
 }
 
+function handleCabinetInput(e: CustomEvent<{ key: string }>) {
+  if (e.detail.key === 'ArrowDown') move(1);
+  if (e.detail.key === 'ArrowUp')   move(-1);
+  if (e.detail.key === 'Enter')     navigate(siteConfig.nav[selectedIndex.value].href);
+}
+
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown);
+  window.addEventListener('cabinet-input', handleCabinetInput as EventListener);
 });
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown);
+  window.removeEventListener('cabinet-input', handleCabinetInput as EventListener);
 });
 </script>
 

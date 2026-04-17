@@ -11,16 +11,25 @@ function handleClick(e: MouseEvent) {
 function handleKeydown(e: KeyboardEvent) {
   if (e.key === 'Enter') {
     window.removeEventListener('keydown', handleKeydown);
+    window.removeEventListener('arcade:dpad', handleDpad as EventListener);
     emit('start');
   }
 }
 
+function handleCabinetInput() {
+  window.removeEventListener('keydown', handleKeydown);
+  window.removeEventListener('cabinet-input', handleCabinetInput);
+  emit('start');
+}
+
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown);
+  window.addEventListener('cabinet-input', handleCabinetInput);
 });
 
 onUnmounted(() => {
   window.removeEventListener('keydown', handleKeydown);
+  window.removeEventListener('cabinet-input', handleCabinetInput);
 });
 </script>
 
